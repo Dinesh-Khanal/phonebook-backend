@@ -28,6 +28,7 @@ let persons = [
 ];
 
 app.use(cors());
+app.use(express.static("build"));
 morgan.token("reqbody", function (req, res) {
   return JSON.stringify(req.body);
 });
