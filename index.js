@@ -3,6 +3,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 
 const app = express();
+const favicon = require("express-favicon");
 
 let persons = [
   {
@@ -28,16 +29,15 @@ let persons = [
 ];
 
 app.use(cors());
+app.use(favicon(__dirname + "/build/favicon.ico"));
 app.use(express.static("build"));
+
+//app.use(express.static("build"));
 morgan.token("reqbody", function (req, res) {
   return JSON.stringify(req.body);
 });
 app.use(morgan(":method :url :status :response-time ms :reqbody"));
 app.use(express.json());
-
-app.get("/", (request, response) => {
-  response.send("<p>Phonebook application</p>");
-});
 
 app.get("/info", (request, response) => {
   const entry = persons.length;
