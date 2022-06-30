@@ -35,7 +35,7 @@ app.use(morgan(":method :url :status :response-time ms :reqbody"));
 app.use(express.json());
 
 app.get("/", (request, response) => {
-  response.send("<p>Phonebook backend application</p>");
+  response.send("<p>Phonebook application</p>");
 });
 
 app.get("/info", (request, response) => {
