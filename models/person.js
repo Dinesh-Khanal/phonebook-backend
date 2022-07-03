@@ -1,8 +1,10 @@
+/* eslint-disable no-undef */
 const mongoose = require("mongoose");
 require("dotenv").config();
 const url = process.env.MONGODB_URI;
 mongoose
   .connect(url)
+  // eslint-disable-next-line no-unused-vars
   .then((result) => {
     console.log("connected to MongoDb");
   })

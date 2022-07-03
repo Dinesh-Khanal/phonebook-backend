@@ -7,6 +7,7 @@ const app = express();
 app.use(cors());
 app.use(express.static("build"));
 
+// eslint-disable-next-line no-unused-vars
 morgan.token("reqbody", function (req, res) {
   return JSON.stringify(req.body);
 });
@@ -66,6 +67,7 @@ app.get("/api/persons/:id", (request, response, next) => {
 
 app.delete("/api/persons/:id", (request, response, next) => {
   Person.findByIdAndRemove({ _id: request.params.id })
+    // eslint-disable-next-line no-unused-vars
     .then((result) => {
       response.status(204).end();
     })
@@ -101,6 +103,7 @@ const errorHandler = (error, request, response, next) => {
 };
 app.use(errorHandler);
 
+// eslint-disable-next-line no-undef
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Server is running at port ${PORT}`);

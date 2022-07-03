@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const mongoose = require("mongoose");
 
 let req;
@@ -26,12 +27,14 @@ const personSchema = new mongoose.Schema({
 const Person = mongoose.model("Person", personSchema);
 mongoose
   .connect(url)
+  // eslint-disable-next-line no-unused-vars
   .then((result) => {
     if (req === "post") {
       const person = new Person({
         name,
         number,
       });
+      // eslint-disable-next-line no-unused-vars
       person.save().then((result) => {
         console.log(`added ${name} ${number} to phonebook.`);
         mongoose.connection.close();
